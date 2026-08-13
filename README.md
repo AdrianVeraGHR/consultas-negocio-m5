@@ -4,6 +4,8 @@
   la cual puede fallar en caso de que sucediera algún error.
   - No es segura, en el caso de que se realizase una consulta a una extensa base de datos, el tiempo que lleva recuperar los registros incrementa la exposición a misma
   favoreciendo vulnerabilidades de acceso por medio del puente de comunicación entre el equipo que consulta y la misma base de datos.
+  - No es mantenible a lo largo de la producción, dado que es una consulta genera que recupera todos los datos, no obstante no otorga ninguna información, ni permite realizar consultas más precisas
+  ni complejas. Este tipo de consultas demandan mucho tiempo y recursos los que no siempre se pueden contar, y si se encuentra en producción, generaría una demora en el funcionamiento de los sistemas.
 
 ¿Por qué son importantes los alias para un stakeholder no técnico? 
   Los alias son importantes para un stakeholder no técnico dado que le permitirá comprender a que hace referencia el contenido del registro y del encabezado. Por ejemplo:
