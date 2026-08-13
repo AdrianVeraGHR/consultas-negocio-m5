@@ -1,7 +1,7 @@
 -- ══════════════════════════════════════════
 -- TechStore — Consultas Básicas SELECT
--- Autor: [Tu nombre]
--- Fecha: [Fecha de entrega]
+-- Autor: Adrian Santiago Agustin Vera
+-- Fecha: 12/08/2026
 -- ══════════════════════════════════════════
 -- Consulta 1: Exploración general de la tabla sales
 SELECT * FROM sales;
