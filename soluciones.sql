@@ -9,9 +9,9 @@
 -- la empresa en toda su red de sucursales?
 -- Operador: UNION (elimina filas completamente duplicadas)
 
-SELECT nombre_producto FROM inventario_sucursal_norte
+SELECT * FROM inventario_sucursal_norte
 UNION 
-SELECT nombre_producto FROM inventario_sucursal_sur;
+SELECT * FROM inventario_sucursal_sur;
 
 -- ── CONSULTA 2: UNION ALL ────────────────
 -- Auditoría de Stock Total
