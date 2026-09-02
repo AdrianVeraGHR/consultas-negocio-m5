@@ -1,12 +1,12 @@
 ¿Cuántas filas devuelve cada consulta y por qué son distintas? Explicá con ejemplos concretos de los datos qué filas se eliminaron con UNION.
+  
   Cada consultas devuelve un resultado diferente, los cuales son:  
     Antes de especificar cuantas registros recuperan cada consulta, se hace la aclaración, que esto es posible siempre que se cumplan las siguientes condiciones:
-      - Las tablas deben de poseer la misma cantidad de registros
-      - Las tablas deben de tener la misma cantidad de columnas, con los mismos parámetros.  
+      - Las tablas deben de tener la misma cantidad de columnas, con los mismos tipos de datos.
     Una vez sabiendo las condiciones podemos especificar cuantos registros devuelve cada consulta:
-    - Consulta con UNION, devuelve 10 filas, debido a que la misma combina las tablas eliminando repetidos, dejando registros únicos.
-      - Ejemplo: El producto [Monitor 4K 27"] se presenta en ambas tablas, pero la consulta devuelve un solo registro, debido a que es repetido.
-    - Consulta con UNION ALL, devuelve 14 filas, debido a que la combinación de tablas se hace de manera total sin eliminar repetidos.
+    - Consulta con UNION, devuelve 14 filas, debido a que la misma combina todas las columnas de las tablas, no es posible eliminar repetidos debido a que la combinación de columnas previene que 2 registros posean todos los campos iguales
+      - Ejemplo: Si se listasen únicamente los nombres de los producto, como [Monitor 4K 27"], el mismo se presenta en ambas tablas, en dicho caso la consulta devuelve un solo registro, debido a que es repetido. Dado que se consideran las 3 columnas la columnas devuelven [103; Monitor 4K 27"; Computación; 3] y [103; Monitor 4K 27"; Computación; 5] esa diferencia en la cantidad de stock evita que sean repetidos
+    - Consulta con UNION ALL, devuelve 14 filas, debido a que la combinación de tablas se hace de manera total ignorando cualquier similitud o diferencia en los datos de las columnas entre tablas.
       - Ejemplo: El producto [Teclado Mecánico] se presenta en ambas tablas, la consulta lo devuelve a pesar de haber registro repetidos en ambas tablas.
       
 ¿Por qué UNION ALL es más eficiente que UNION? ¿Qué operación adicional realiza UNION internamente que consume más recursos?
