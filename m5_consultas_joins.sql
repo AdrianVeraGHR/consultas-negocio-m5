@@ -40,14 +40,16 @@ WHERE vent.id_venta IS NULL
 Escribí dos SELECT sobre tus ventas, separados por el criterio que corresponda a tu caso (por ejemplo, ventas de dos períodos, dos sucursales o dos orígenes distintos),
 y agregá en cada uno una columna de texto fija que identifique el origen. Unilos con UNION ALL y cerrá con un GROUP BY para obtener el total por cada origen.*/
 
-SELECT 
-id_venta, id_cliente, id_producto, id_territorio, cantidad, precio_unitario, fecha_venta, precio_total, 'online' as canal,	
-tipo_operacion, objetivo_minimo, trimestre_venta
-FROM ventas
-WHERE trimestre_venta = '26Q1'
-UNION ALL
-SELECT 
-id_venta, id_cliente, id_producto, id_territorio, cantidad, precio_unitario, fecha_venta, precio_total, 'presencial' as canal,	
-tipo_operacion, objetivo_minimo, trimestre_venta
-FROM ventas
-WHERE trimestre_venta = '26Q2'
+SELECT trimestre_venta, canal, COUNT(*) as total_ventas  FROM
+	(SELECT
+	id_venta, id_cliente, id_producto, id_territorio, cantidad, precio_unitario, fecha_venta, precio_total, 'online' as canal,	
+	tipo_operacion, objetivo_minimo, trimestre_venta
+	FROM ventas
+	WHERE trimestre_venta = '26Q1'
+	UNION ALL
+	SELECT 
+	id_venta, id_cliente, id_producto, id_territorio, cantidad, precio_unitario, fecha_venta, precio_total, 'presencial' as canal,	
+	tipo_operacion, objetivo_minimo, trimestre_venta
+	FROM ventas
+	WHERE trimestre_venta = '26Q2') AS ventas_x_trimestre
+GROUP BY trimestre_venta, canal;
